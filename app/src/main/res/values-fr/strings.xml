@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Assignment 1</string>
+    <string name="hello_message">Bonjour!</string>
+    <string name="login_title">Connexion</string>
+    <string name="login_hint">nom d\'utilisateur</string>
+    <string name="password_label">mot de passe</string>
+    <string name="switch_text">À quoi ça sert ?</string>
+</resources>

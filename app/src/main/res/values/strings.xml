@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Assignment 1</string>
     <string name="hello_message">Hello World!</string>
-    <string name="ButtonText">I\’m a button</string>
+    <string name="ButtonText" translatable="false">I\’m a button</string>
+    <string name="login_title">Login</string>
+    <string name="login_hint">login name</string>
+    <string name="password_label">password</string>
+    <string name="switch_text">What does this do?</string>
 </resources>
