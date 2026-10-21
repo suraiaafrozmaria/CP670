@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Assignment 1</string>
-    <string name="hello_message">Bonjour!</string>
-    <string name="login_title">Connexion</string>
-    <string name="login_hint">nom d\'utilisateur</string>
-    <string name="password_label">mot de passe</string>
-    <string name="switch_text">À quoi ça sert ?</string>
+    <string name="login_button">Connexion</string>
+    <string name="error_email_invalid">Veuillez saisir une adresse e-mail valide</string>
+    <string name="error_password_empty">Le mot de passe ne peut pas être vide</string>
+
+    <string name="radio_text">Bouton radio</string>
+    <string name="check_text">Case à cocher</string>
+    <string name="camera_description">Prendre une photo</string>
+    <string name="switch_on">L\'interrupteur est activé</string>
+    <string name="switch_off">L\'interrupteur est désactivé</string>
+
+    <string name="dialog_title">Terminer l\'activité ?</string>
+    <string name="dialog_message">Voulez-vous terminer cette activité ?</string>
+    <string name="ok">Oui</string>
+    <string name="cancel">Non</string>
+
+    <string name="response_message">Mes informations à partager</string>
+    <string name="passed_message">ListItemsActivity a transmis : %1$s</string>
+    <string name="camera_unavailable">Aucune application photo trouvée</string>
+    <string name="camera_permission_denied">L\'autorisation de la caméra est nécessaire pour prendre une photo</string>
 </resources>
