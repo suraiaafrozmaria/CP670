@@ -8,7 +8,6 @@ import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,12 +21,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button loginButton;
     private SharedPreferences prefs;
+
     private TextView logView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppLog.i(ACTIVITY_NAME, "LoginActivity: inside onCreate");
         setContentView(R.layout.activity_login);
+
+        logView = findViewById(R.id.logView);
+        AppLog.bind(logView);
 
         emailEditText = findViewById(R.id.loginName);
         passwordEditText = findViewById(R.id.password);
@@ -69,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        AppLog.bind(logView);
         AppLog.i(ACTIVITY_NAME, "LoginActivity: inside onResume");
     }
 
@@ -88,5 +93,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         AppLog.i(ACTIVITY_NAME, "LoginActivity: inside onDestroy");
+        AppLog.unbind(logView);
     }
 }

@@ -1,0 +1,96 @@
+@startuml
+title Class Diagram of AndroidAssignments
+
+package "androidx.appcompat.app" {
+  class AppCompatActivity
+}
+package "android.widget" {
+  class "ArrayAdapter<String>" as ArrayAdapter
+}
+
+package "com.example.androidassignments" {
+  class LoginActivity {
+    #ACTIVITY_NAME : String
+    -PREFS_NAME : String
+    -EMAIL_KEY : String
+    -emailEditText : EditText
+    -passwordEditText : EditText
+    -loginButton : Button
+    -prefs : SharedPreferences
+    -logView : TextView
+    #onCreate()
+    -attemptLogin()
+    #onStart()
+    #onResume()
+    #onPause()
+    #onStop()
+    #onDestroy()
+  }
+  class MainActivity {
+    #ACTIVITY_NAME : String
+    -REQUEST_LIST_ITEMS : int
+    -logView : TextView
+    #onCreate()
+    #onActivityResult()
+    #onStart()
+    #onResume()
+    #onPause()
+    #onStop()
+    #onDestroy()
+  }
+  class ListItemsActivity {
+    #ACTIVITY_NAME : String
+    -REQUEST_IMAGE_CAPTURE : int
+    -REQUEST_CAMERA_PERMISSION : int
+    -imageButton : ImageButton
+    -logView : TextView
+    #onCreate()
+    -print()
+    -openCamera()
+    -launchCamera()
+    +onRequestPermissionsResult()
+    #onActivityResult()
+    -showFinishDialog()
+    #onStart()
+    #onResume()
+    #onPause()
+    #onStop()
+    #onDestroy()
+  }
+  class ChatWindow {
+    #ACTIVITY_NAME : String
+    -listView : ListView
+    -textInput : EditText
+    -sendButton : Button
+    -chatMessages : ArrayList<String>
+    #onCreate()
+  }
+  class ChatAdapter {
+    +getCount() : int
+    +getItem() : String
+    +getView() : View
+  }
+  class AppLog {
+    -MAX_LINES_SHOWN : int
+    -lines : List<String>
+    -target : WeakReference<TextView>
+    +{static} i()
+    +{static} bind()
+    +{static} unbind()
+    -{static} render()
+  }
+}
+
+AppCompatActivity <|-- LoginActivity
+AppCompatActivity <|-- MainActivity
+AppCompatActivity <|-- ListItemsActivity
+AppCompatActivity <|-- ChatWindow
+ArrayAdapter <|-- ChatAdapter
+ChatWindow +-- ChatAdapter
+LoginActivity ..> MainActivity : starts
+MainActivity ..> ListItemsActivity : starts
+MainActivity ..> ChatWindow : starts
+LoginActivity ..> AppLog : uses
+MainActivity ..> AppLog : uses
+ListItemsActivity ..> AppLog : uses
+@enduml

@@ -27,4 +27,11 @@
     <string name="passed_message">ListItemsActivity passed: %1$s</string>
     <string name="camera_unavailable">No camera app found</string>
     <string name="camera_permission_denied">Camera permission is required to take a picture</string>
+
+    <string name="start_chat">Start Chat</string>
+    <string name="send">Send</string>
+    <string name="chat_hint">Type a message</string>
+    <string name="chat_title">Chat</string>
+    <string name="incoming_icon">Incoming message</string>
+    <string name="outgoing_icon">Outgoing message</string>
 </resources>
