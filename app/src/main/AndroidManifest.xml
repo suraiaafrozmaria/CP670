@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -16,7 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAssignments">
-
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".LoginActivity" />
@@ -27,6 +27,7 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,6 +46,11 @@
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".TestToolbar"
+            android:exported="false"
+            android:label="@string/test_toolbar"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

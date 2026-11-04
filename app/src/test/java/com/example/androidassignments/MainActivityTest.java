@@ -84,4 +84,16 @@ public class MainActivityTest {
             });
         }
     }
+
+    @Test
+    public void testToolbarButtonLaunchesTestToolbar() {
+        try (ActivityScenario<MainActivity> s = ActivityScenario.launch(MainActivity.class)) {
+            s.onActivity(a -> {
+                ((Button) a.findViewById(R.id.testToolbarButton)).performClick();
+                Intent next = shadowOf(a).getNextStartedActivity();
+                assertNotNull(next);
+                assertEquals(TestToolbar.class.getName(), next.getComponent().getClassName());
+            });
+        }
+    }
 }

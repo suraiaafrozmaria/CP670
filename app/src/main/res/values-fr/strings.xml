@@ -26,4 +26,18 @@
     <string name="chat_title">Discussion</string>
     <string name="incoming_icon">Message entrant</string>
     <string name="outgoing_icon">Message sortant</string>
+
+    <string name="test_toolbar">Tester la barre d\'outils</string>
+    <string name="choice_1">Choix 1</string>
+    <string name="choice_2">Choix 2</string>
+    <string name="choice_3">Choix 3</string>
+    <string name="about">À propos</string>
+    <string name="about_message">Version 1.0, par Suraia Afroz Maria</string>
+    <string name="you_selected_item_1">Vous avez sélectionné l\'élément 1</string>
+    <string name="fab_message">Bonjour depuis le bouton flottant !</string>
+    <string name="fab_description">Afficher un message</string>
+    <string name="go_back_title">Voulez-vous revenir en arrière ?</string>
+    <string name="custom_dialog_title">Définir un nouveau message</string>
+    <string name="new_message_hint">Nouveau message</string>
+    <string name="dialog_icon_description">Icône de la boîte de dialogue</string>
 </resources>
