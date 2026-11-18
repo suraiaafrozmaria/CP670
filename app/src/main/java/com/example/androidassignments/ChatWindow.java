@@ -19,6 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -32,6 +36,7 @@ public class ChatWindow extends AppCompatActivity {
     private EditText textInput;
     private Button sendButton;
     private final ArrayList<String> chatMessages = new ArrayList<>();
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +67,51 @@ public class ChatWindow extends AppCompatActivity {
         // so there is no null pointer exception.
         ChatAdapter messageAdapter = new ChatAdapter(this);
         listView.setAdapter(messageAdapter);
+//
+        ChatDatabaseHelper dbHelper = new ChatDatabaseHelper(this);
+        db = dbHelper.getWritableDatabase();
 
+        Cursor cursor = db.query(ChatDatabaseHelper.TABLE_NAME,
+                new String[]{ChatDatabaseHelper.KEY_ID, ChatDatabaseHelper.KEY_MESSAGE},
+                null, null, null, null, ChatDatabaseHelper.KEY_ID + " ASC");
+        int messageIndex = cursor.getColumnIndexOrThrow(ChatDatabaseHelper.KEY_MESSAGE);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String saved = cursor.getString(messageIndex);
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + saved);
+            chatMessages.add(saved);
+            cursor.moveToNext();
+        }
+        Log.i(ACTIVITY_NAME, "Cursor's  column count =" + cursor.getColumnCount());
+        for (int i = 0; i < cursor.getColumnCount(); i++) {
+            Log.i(ACTIVITY_NAME, "Column " + i + " name = " + cursor.getColumnName(i));
+        }
+        cursor.close();
+        messageAdapter.notifyDataSetChanged();
+//
         sendButton.setOnClickListener(v -> {
             String message = textInput.getText().toString().trim();
             if (message.isEmpty()) {
                 return;
             }
             chatMessages.add(message);
+
+            ContentValues values = new ContentValues();
+            values.put(ChatDatabaseHelper.KEY_MESSAGE, message);
+            db.insert(ChatDatabaseHelper.TABLE_NAME, null, values);
+
             messageAdapter.notifyDataSetChanged();
             listView.setSelection(chatMessages.size() - 1);
             textInput.setText("");
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
     }
 
     private class ChatAdapter extends ArrayAdapter<String> {

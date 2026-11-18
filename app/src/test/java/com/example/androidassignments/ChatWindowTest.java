@@ -3,6 +3,8 @@ package com.example.androidassignments;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -92,6 +95,42 @@ public class ChatWindowTest {
             s.onActivity(a -> {
                 assertNotNull(a.getSupportActionBar());
                 assertEquals("Chat", a.getSupportActionBar().getTitle().toString());
+            });
+        }
+    }
+
+    @Test
+    public void sentMessageIsSavedAndReloadedNextTime() {
+        try (ActivityScenario<ChatWindow> s = ActivityScenario.launch(ChatWindow.class)) {
+            s.onActivity(a -> {
+                ((EditText) a.findViewById(R.id.chatEditText)).setText("Saved hello");
+                ((Button) a.findViewById(R.id.sendButton)).performClick();
+            });
+        }
+        try (ActivityScenario<ChatWindow> s = ActivityScenario.launch(ChatWindow.class)) {
+            s.onActivity(a -> {
+                ListView list = a.findViewById(R.id.chatListView);
+                assertEquals(1, list.getAdapter().getCount());
+                assertEquals("Saved hello", list.getAdapter().getItem(0));
+            });
+        }
+    }
+
+    @Test
+    public void existingDatabaseMessagesAreLoadedOnStart() {
+        ChatDatabaseHelper h = new ChatDatabaseHelper(ApplicationProvider.getApplicationContext());
+        SQLiteDatabase d = h.getWritableDatabase();
+        ContentValues v = new ContentValues();
+        v.put(ChatDatabaseHelper.KEY_MESSAGE, "Old one");
+        d.insert(ChatDatabaseHelper.TABLE_NAME, null, v);
+        d.close();
+        h.close();
+
+        try (ActivityScenario<ChatWindow> s = ActivityScenario.launch(ChatWindow.class)) {
+            s.onActivity(a -> {
+                ListView list = a.findViewById(R.id.chatListView);
+                assertEquals(1, list.getAdapter().getCount());
+                assertEquals("Old one", list.getAdapter().getItem(0));
             });
         }
     }
