@@ -1,5 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Assignment 1</string>
+    <string name="app_name">Assignment 2</string>
     <string name="hello_message">Hello World!</string>
-    <string name="ButtonText">I\’m a button</string>
+    <string name="ButtonText">I\'m a button</string>
+
+    <string name="login_title">Login</string>
+    <string name="login_hint">login name</string>
+    <string name="password_label">password</string>
+    <string name="login_button">Login</string>
+    <string name="error_email_invalid">Please enter a valid email address</string>
+    <string name="error_password_empty">Password cannot be empty</string>
+
+    <string name="radio_text">RadioButton</string>
+    <string name="check_text">CheckBox</string>
+    <string name="switch_text">What does this do?</string>
+    <string name="camera_description">Take a picture</string>
+    <string name="switch_on">Switch is On</string>
+    <string name="switch_off">Switch is Off</string>
+
+    <string name="dialog_title">Finish activity?</string>
+    <string name="dialog_message">Do you want to finish this activity?</string>
+    <string name="ok">Yes</string>
+    <string name="cancel">No</string>
+
+    <string name="response_message">My information to share</string>
+    <string name="passed_message">ListItemsActivity passed: %1$s</string>
+    <string name="camera_unavailable">No camera app found</string>
+    <string name="camera_permission_denied">Camera permission is required to take a picture</string>
+
+    <string name="start_chat">Start Chat</string>
+    <string name="send">Send</string>
+    <string name="chat_hint">Type a message</string>
+    <string name="chat_title">Chat</string>
+    <string name="incoming_icon">Incoming message</string>
+    <string name="outgoing_icon">Outgoing message</string>
+
+    <string name="test_toolbar">Test Toolbar</string>
+    <string name="choice_1">Choice 1</string>
+    <string name="choice_2">Choice 2</string>
+    <string name="choice_3">Choice 3</string>
+    <string name="about">About</string>
+    <string name="about_message">Version 1.0, by Suraia Afroz Maria</string>
+    <string name="you_selected_item_1">You selected item 1</string>
+    <string name="fab_message">Hello from the floating button!</string>
+    <string name="fab_description">Show a message</string>
+    <string name="go_back_title">Do you want to go back?</string>
+    <string name="custom_dialog_title">Set a new message</string>
+    <string name="new_message_hint">New Message</string>
+    <string name="dialog_icon_description">Dialog icon</string>
 </resources>
